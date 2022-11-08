@@ -22,8 +22,8 @@ $(document).ready(function initiate() {
   let day4 = moment().add(4, "days").format("l");
   let day5 = moment().add(5, "days").format("l");
   console.log("Next days are : "+ day1+ "," + day2+ "," + day3+ "," + day4+ "," +day5);
-  let citySearch;
-  let citySearchHistory;
+  let city;
+  let cities;
   //*** time variables end list here */
 
 // ** THIS IS NOTE ONLY, this did not work becuase the city is not typed in untill after initiating, also should wait to click search // the following is to call and declare input from form input field
@@ -37,10 +37,10 @@ function loadHistory() {
   let lastSearch = localStorage.getItem("mostRecent");
   console.log("storage contains: " + lastSearch);
   if (lastSearch) {
-    citySearch = lastSearch;
+    city = lastSearch;
     //search();
   } else {
-    citySearch = "Miami";
+    city = "Miami";
     //search();
   }
 }
@@ -51,13 +51,13 @@ loadHistory();
 
 //loadRecentCities
   function loadRecentCities() {
-    let recentCities = JSON.parse(localStorage.getItem("citySearchHistory"));
+    let recentCities = JSON.parse(localStorage.getItem("cities"));
     console.log(recentCities)
 
     if (recentCities) {
-      citySearchHistory = recentCities;
+      cities = recentCities;
     } else {
-      citySearchHistory = [];
+      cities = [];
     }
   }
 
@@ -89,12 +89,12 @@ $("#search").on("click", (e) => {
 function pullCity(){
 city = $("#city-input").val();
 console.log("The city inputed is:" + city);
-if(city && citySearchHistory.includes(city)===false){
+if(city && cities.includes(city)===false){
   console.log(city+": Is not on list");
   saveToStorage();
-  return citySearch;
+  return city;
 
-} else if (!citySearch){
+} else if (!city){
   alert("Enter a real city name.")
 }
 // now store, run check first against storage 
@@ -105,12 +105,24 @@ if(city && citySearchHistory.includes(city)===false){
 // if not on storage save function
 function saveToStorage(){
   localStorage.setItem("mostRecent", city);
-  citySearchHistory.push(city);
-  console.log("Storage length is: " + citySearchHistory.length)
-  localStorage.setItem("citySearchHistory", JSON.stringify(citySearchHistory));
+  cities.push(city);
+  console.log("Storage length is: " + cities.length)
+  localStorage.setItem("cities", JSON.stringify(cities));
 }
 // end save function
 
+// function to add to visible listCities
+function listCities() {
+  $("#body-list").text("");
+  cities.forEach((city) => {
+var row="row";
+$("#body-list").append("<tr><td>" + city + "</td></tr>");
+  });
+}
+
+listCities();
+
+//end function for visible listCities
 
 
 
