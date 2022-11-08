@@ -150,6 +150,7 @@ function search(){
     $("#temp").text("Current Temp (F): " + cityTemp.toFixed(1));
     $("#humidity").text("Humidity: " + cityHum + "%");
     $("#wind-speed").text("Wind Speed: " + cityWind + "mph");
+    $("#icon").html(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`);
   })
   
 } //<!-- the bracket is for the search fucntion-->
