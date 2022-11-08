@@ -4,7 +4,7 @@
 
 //global variables
 var apiSearchURL="https://api.openweathermap.org/data/2.5/weather?q="
-var APIkey= "2365d66d33b913ca087ab8a7085c5879"
+var APIkey= "&units=imperial&appid=2365d66d33b913ca087ab8a7085c5879"
 
 
 $(document).ready(function initiate() { 
@@ -72,7 +72,7 @@ loadHistory();
 $("#search").on("click", (e) => {
   e.preventDefault();
   pullCity();
-  //search();
+  search();
   $("#city-input").val("");
   //listCities();
 });
@@ -124,6 +124,36 @@ listCities();
 
 //end function for visible listCities
 
+function search(){
+  let cityURL=apiSearchURL+city+ APIkey;
+  console.log(cityURL);
+
+  fetch(cityURL,{
+    method: "GET",
+  })
+  .then(function(response){
+    return response.json();
+  })
+  .then(function(data){
+    console.log(data);
+    console.log(data.main.feels_like)
+
+    let cityName= data.name ;
+    let cityCond =data.weather[0].description.toUpperCase();
+    let cityTemp = data.main.temp;
+    let cityHum = data.main.humidity;
+    let cityWind = data.wind.speed;
+    let icon = data.weather[0].icon;
+
+    $("#city-name-date").html("City of " + cityName + " on " + " " + todaysDate + ".");
+    $("#city-cond").text("Current Conditions: " + cityCond);
+    $("#temp").text("Current Temp (F): " + cityTemp.toFixed(1));
+    $("#humidity").text("Humidity: " + cityHum + "%");
+    $("#wind-speed").text("Wind Speed: " + cityWind + "mph");
+  })
+  
+} //<!-- the bracket is for the search fucntion-->
+  
 
 
   });
