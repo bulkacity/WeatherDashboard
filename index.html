@@ -48,7 +48,7 @@
         </div>
         
         
-        <div class="col-7 container text-center border"> Main Dashboard
+        <div class="col-7 container text-center border" id="main-dash-text"> Main Dashboard
             <!-- // The boxes for days are within the rest of the 9 blocks -->
             <div class="container text-center" >
             <div class="row"> 
@@ -65,7 +65,9 @@
                       
                     </div>
                     <!-- end -->
-                <div class="row">
+                <div class="p-4 container" id="five-day-text">5 day Forecast
+                  <div class="bg-success bg-opacity-50 border border-success p-2" style="--bs-border-opacity: .25;"> <!-- the border -->
+                  <div class="row  "> 
                
                 <div class="col" id="forcast-row">
                     <!-- Day 1 -->
@@ -83,25 +85,26 @@
                   <div class="col">
                     <!-- Day 2 -->
                     <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                      
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
+                      <div class="card-body">
+                        <h5 class="card-title" id="day2">Day</h5>
+                        <h6 class="card-title" id="date2">Date</h6>
+                        <h6 class="card-title" id="temp2">Temp</h6>
+                        <h6 class="card-title" id="hum2">Humidity</h6>
+                        <div id="icon2"></div>
                       </div>
+                    </div>
                     <!-- end -->
                   </div>
                   <div class="col">
                     <!-- Day 3 -->
                     <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                      
+                      <div class="card">
                         <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                          <h5 class="card-title" id="day3">Day</h5>
+                          <h6 class="card-title" id="date3">Date</h6>
+                          <h6 class="card-title" id="temp3">Temp</h6>
+                          <h6 class="card-title" id="hum3">Humidity</h6>
+                          <div id="icon3"></div>
                         </div>
                       </div>
                     <!-- end -->
@@ -109,33 +112,35 @@
                   <div class="col">
                     <!-- Day 4 -->
                     <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                      
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
+                      <div class="card-body">
+                        <h5 class="card-title" id="day4">Day</h5>
+                        <h6 class="card-title" id="date4">Date</h6>
+                        <h6 class="card-title" id="temp4">Temp</h6>
+                        <h6 class="card-title" id="hum4">Humidity</h6>
+                        <div id="icon4"></div>
                       </div>
+                    </div>
                     <!-- end -->
                   </div>
                   <div class="col">
                     <!-- Day 5 -->
                     <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                      
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
+                      <div class="card-body">
+                        <h5 class="card-title" id="day5">Day</h5>
+                        <h6 class="card-title" id="date5">Date</h6>
+                        <h6 class="card-title" id="temp5">Temp</h6>
+                        <h6 class="card-title" id="hum5">Humidity</h6>
+                        <div id="icon5"></div>
                       </div>
+                    </div>
                     <!-- end -->
                   </div>
             
             
-                </div id="forcast-row">   
-            
+                </div id="forcast-row">  <!--This is the forcast end row container --> 
+              </div>
+            <!-- end of forcast container -->
+            </div>
                 </div>
 
         </div>
