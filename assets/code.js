@@ -200,6 +200,37 @@ fetch(cityURLlatLon,{
     fiveDayquery.push(data2.list[i]);
   }
   console.log(fiveDayquery);
+  console.log("the max temp for day1 is : " + fiveDayquery[0].main.temp_max)
+  let tempMaxd1= fiveDayquery[0].main.temp_max;
+  $("#temp1").text(tempMaxd1+ " deg");
+  let hum1= fiveDayquery[0].main.humidity;
+  $("#hum1").text("Humidity: " + hum1);
+
+
+
+  console.log("the max temp for day2 is : " + fiveDayquery[1].main.temp_max)
+  let tempMaxd2= fiveDayquery[1].main.temp_max;
+  $("#temp2").text(tempMaxd2+ " deg");
+  let hum2= fiveDayquery[1].main.humidity;
+  $("#hum2").text("Humidity: " + hum2);
+
+  console.log("the max temp for day3 is : " + fiveDayquery[2].main.temp_max)
+  let tempMaxd3= fiveDayquery[2].main.temp_max;
+  $("#temp3").text(tempMaxd3+ " deg");
+  let hum3= fiveDayquery[2].main.humidity;
+  $("#hum3").text("Humidity: " + hum3);
+
+  console.log("the max temp for day4 is : " + fiveDayquery[3].main.temp_max)
+  let tempMaxd4= fiveDayquery[3].main.temp_max;
+  $("#temp4").text(tempMaxd4+ " deg");
+  let hum4= fiveDayquery[3].main.humidity;
+  $("#hum4").text("Humidity: " + hum4);
+
+  console.log("the max temp for day5 is : " + fiveDayquery[4].main.temp_max)
+  let tempMaxd5= fiveDayquery[4].main.temp_max;
+  $("#temp5").text(tempMaxd5+ " deg");
+  let hum5= fiveDayquery[4].main.humidity;
+  $("#hum5").text("Humidity: " + hum5);
 });
 
 }
