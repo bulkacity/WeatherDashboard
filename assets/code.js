@@ -69,8 +69,8 @@ loadHistory();
 // before storage, check if local storage already contains the city
 // save city in local storage
 // clear the input field
-$("#search").on("click", (e) => {
-  e.preventDefault();
+$("#search").on("click", function(errorCheck){
+  errorCheck.preventDefault();
   pullCity();
   search();
   $("#city-input").val("");
@@ -114,7 +114,7 @@ function saveToStorage(){
 // function to add to visible listCities
 function listCities() {
   $("#body-list").text("");
-  cities.forEach((city) => {
+  cities.forEach(function(city) {
 var row="row";
 $("#body-list").append("<tr><td>" + city + "</td></tr>");
   });
