@@ -75,7 +75,7 @@ InputCity = $("#city-input").val();
 let city =InputCity.charAt(0).toUpperCase() + InputCity.slice(1).toLowerCase();
 console.log("capitalized city name is "+cities);
 console.log("The city inputed is:" + city);
-if(cities.includes(city)===false){
+if(city && cities.includes(city)===false){
   console.log(city+": Is not on list");
   saveToStorage(city);
   console.log ("after saving city is:" + city);
