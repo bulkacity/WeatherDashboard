@@ -139,11 +139,18 @@ function search(){
     console.log(data.main.feels_like)
 
     let cityName= data.name ;
+    console.log("city name" + cityName);
     let cityCond =data.weather[0].description.toUpperCase();
+    console.log("city cond" +cityCond);
     let cityTemp = data.main.temp;
+    console.log("city temp" + cityTemp);
     let cityHum = data.main.humidity;
+    console.log("cityHum" + cityHum);
     let cityWind = data.wind.speed;
+    console.log("cityWind" + cityWind);
     let icon = data.weather[0].icon;
+    console.log("icon" + icon);
+
 
     $("#city-name-date").html("City of " + cityName + " on " + " " + todaysDate + ".");
     $("#city-cond").text("Current Conditions: " + cityCond);
