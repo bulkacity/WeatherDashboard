@@ -205,7 +205,11 @@ fetch(cityURLlatLon,{
   $("#temp1").text(tempMaxd1+ " deg");
   let hum1= fiveDayquery[0].main.humidity;
   $("#hum1").text("Humidity: " + hum1);
-
+  console.log("icon " + fiveDayquery[0].weather[0].icon)
+  icon1=fiveDayquery[0].weather[0].icon;
+  $("#icon1").html(`<img src="http://openweathermap.org/img/wn/${icon1}@2x.png">`);
+  des1=fiveDayquery[0].weather[0].description;
+  $("#des1").text(des1);
 
 
   console.log("the max temp for day2 is : " + fiveDayquery[1].main.temp_max)
@@ -213,24 +217,43 @@ fetch(cityURLlatLon,{
   $("#temp2").text(tempMaxd2+ " deg");
   let hum2= fiveDayquery[1].main.humidity;
   $("#hum2").text("Humidity: " + hum2);
+  icon2=fiveDayquery[1].weather[0].icon;
+  $("#icon2").html(`<img src="http://openweathermap.org/img/wn/${icon2}@2x.png">`);
+  des2=fiveDayquery[1].weather[0].description;
+  $("#des2").text(des2);
+
 
   console.log("the max temp for day3 is : " + fiveDayquery[2].main.temp_max)
   let tempMaxd3= fiveDayquery[2].main.temp_max;
   $("#temp3").text(tempMaxd3+ " deg");
   let hum3= fiveDayquery[2].main.humidity;
   $("#hum3").text("Humidity: " + hum3);
+  icon3=fiveDayquery[2].weather[0].icon;
+  $("#icon3").html(`<img src="http://openweathermap.org/img/wn/${icon3}@2x.png">`);
+  des3=fiveDayquery[2].weather[0].description;
+  $("#des3").text(des3);
+
 
   console.log("the max temp for day4 is : " + fiveDayquery[3].main.temp_max)
   let tempMaxd4= fiveDayquery[3].main.temp_max;
   $("#temp4").text(tempMaxd4+ " deg");
   let hum4= fiveDayquery[3].main.humidity;
   $("#hum4").text("Humidity: " + hum4);
+  icon4=fiveDayquery[3].weather[0].icon;
+  $("#icon4").html(`<img src="http://openweathermap.org/img/wn/${icon4}@2x.png">`);
+  des4=fiveDayquery[3].weather[0].description;
+  $("#des4").text(des4);
+
 
   console.log("the max temp for day5 is : " + fiveDayquery[4].main.temp_max)
   let tempMaxd5= fiveDayquery[4].main.temp_max;
   $("#temp5").text(tempMaxd5+ " deg");
   let hum5= fiveDayquery[4].main.humidity;
   $("#hum5").text("Humidity: " + hum5);
+  icon5=fiveDayquery[4].weather[0].icon;
+  $("#icon5").html(`<img src="http://openweathermap.org/img/wn/${icon5}@2x.png">`);
+  des5=fiveDayquery[4].weather[0].description;
+  $("#des5").text(des5);
 });
 
 }
