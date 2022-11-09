@@ -42,7 +42,7 @@ function loadHistory() {
   let lastSearch = localStorage.getItem("mostRecent");
   console.log("storage contains: " + lastSearch);
   if (lastSearch) {
-    console.log("This is going to search last search"+ lastSearch);
+    console.log("This is going to search last search upon opening"+ lastSearch);
     search(lastSearch);
   } else {
     HomeCity = "Miami";
@@ -83,6 +83,10 @@ if(cities.includes(city)===false){
   search(city);
   return city;
   
+}
+else if(cities.includes(city)===true){
+  search(city);
+  return city;
 
 } else if (!city){
   alert("Enter a real city name.")
