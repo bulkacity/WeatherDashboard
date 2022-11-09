@@ -17,10 +17,15 @@ $(document).ready(function initiate() {
   let todaysDate = moment().format("l");
   console.log("Todays date is: "+todaysDate);
   let day1 = moment().add(1, "days").format("l");
+  $("#date1").text(day1);
   let day2 = moment().add(2, "days").format("l");
+  $("#date2").text(day2);
   let day3 = moment().add(3, "days").format("l");
+  $("#date3").text(day3);
   let day4 = moment().add(4, "days").format("l");
+  $("#date4").text(day4);
   let day5 = moment().add(5, "days").format("l");
+  $("#date5").text(day5);
   console.log("Next days are : "+ day1+ "," + day2+ "," + day3+ "," + day4+ "," +day5);
   let city;
   let cities;
@@ -37,11 +42,11 @@ function loadHistory() {
   let lastSearch = localStorage.getItem("mostRecent");
   console.log("storage contains: " + lastSearch);
   if (lastSearch) {
-    city = lastSearch;
-    //search();
+    console.log("This is going to search last search"+ lastSearch);
+    search(lastSearch);
   } else {
-    city = "Miami";
-    //search();
+    HomeCity = "Miami";
+    search(HomeCity);
   }
 }
 loadHistory();
@@ -64,35 +69,20 @@ loadHistory();
   loadRecentCities()
 //end here
 
-// event handeler for search, now declare the city input
-// store city in local storage
-// before storage, check if local storage already contains the city
-// save city in local storage
-// clear the input field
-$("#search").on("click", function(errorCheck){
-  errorCheck.preventDefault();
-  pullCity();
-  search();
-  $("#city-input").val("");
-  //listCities();
-});
-
-
-//end here
-
-
-
-
-
-
 // the following is to call and declare input from form input field
 function pullCity(){
-city = $("#city-input").val();
+InputCity = $("#city-input").val();
+let city =InputCity.charAt(0).toUpperCase() + InputCity.slice(1).toLowerCase();
+console.log("capitalized city name is "+cities);
 console.log("The city inputed is:" + city);
-if(city && cities.includes(city)===false){
+if(cities.includes(city)===false){
   console.log(city+": Is not on list");
-  saveToStorage();
+  saveToStorage(city);
+  console.log ("after saving city is:" + city);
+  console.log("City was searched, is :" + city);
+  search(city);
   return city;
+  
 
 } else if (!city){
   alert("Enter a real city name.")
@@ -103,7 +93,7 @@ if(city && cities.includes(city)===false){
 /// end here
 
 // if not on storage save function
-function saveToStorage(){
+function saveToStorage(city){
   localStorage.setItem("mostRecent", city);
   cities.push(city);
   console.log("Storage length is: " + cities.length)
@@ -124,7 +114,23 @@ listCities();
 
 //end function for visible listCities
 
-function search(){
+// event handeler for search, now declare the city input
+// store city in local storage
+// before storage, check if local storage already contains the city
+// save city in local storage
+// clear the input field
+$("#search").on("click", function(errorCheck){
+  errorCheck.preventDefault();
+  pullCity();
+  $("#city-input").val("");
+  listCities();
+});
+
+
+//end here
+
+
+function search(city){
   let cityURL=apiSearchURL+city+ APIkey;
   console.log(cityURL);
 
