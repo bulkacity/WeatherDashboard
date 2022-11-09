@@ -160,6 +160,9 @@ function search(city){
     console.log("cityWind" + cityWind);
     let icon = data.weather[0].icon;
     console.log("icon" + icon);
+    let geolat=data.coord;
+    console.log("lon : " + geolat.lon )
+    console.log("lat : " + geolat.lat )
 
 
     $("#city-name-date").html("City of " + cityName + " on " + " " + todaysDate + ".");
@@ -168,8 +171,43 @@ function search(city){
     $("#humidity").text("Humidity: " + cityHum + "%");
     $("#wind-speed").text("Wind Speed: " + cityWind + "mph");
     $("#icon").html(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`);
+
+    defineNextDays(geolat.lon,geolat.lat)
   })
-  
+ 
+// The following will now generate an array of objects when fetching data from the server
+  function defineNextDays(lon,lat){
+
+//https://api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid={API key}
+let geoLocatedays1="https://api.openweathermap.org/data/2.5/forecast?lat=";
+let geoLocatedays2="&lon=";
+let geoLocatedays3="&appid=2365d66d33b913ca087ab8a7085c5879&units=imperial&cnt=41";
+
+let cityURLlatLon=geoLocatedays1 + lat + geoLocatedays2 + lon + geoLocatedays3;
+ console.log(cityURLlatLon);
+
+fetch(cityURLlatLon,{
+  method: "GET",
+})
+.then(function(response2){
+  return response2.json();
+})
+.then(function(data2){
+  console.log(data2);
+  console.log(data2.list[0])
+  let fiveDayquery=[];
+  for (i=0;i < 40 ; i+=8){
+    fiveDayquery.push(data2.list[i]);
+  }
+  console.log(fiveDayquery);
+});
+
+}
+
+// After fetching END
+
+
+
 } //<!-- the bracket is for the search fucntion-->
   
 
