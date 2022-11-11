@@ -5,7 +5,8 @@
 //global variables
 var apiSearchURL="https://api.openweathermap.org/data/2.5/weather?q="
 var APIkey= "&units=imperial&appid=2365d66d33b913ca087ab8a7085c5879"
-
+let city;
+let cities;
 
 $(document).ready(function initiate() { 
   
@@ -27,8 +28,11 @@ $(document).ready(function initiate() {
   let day5 = moment().add(5, "days").format("l");
   $("#date5").text(day5);
   console.log("Next days are : "+ day1+ "," + day2+ "," + day3+ "," + day4+ "," +day5);
-  let city;
-  let cities;
+
+  loadRecentCities();
+  loadHistory();
+
+
   //*** time variables end list here */
 
 // ** THIS IS NOTE ONLY, this did not work becuase the city is not typed in untill after initiating, also should wait to click search // the following is to call and declare input from form input field
@@ -49,7 +53,7 @@ function loadHistory() {
     search(HomeCity);
   }
 }
-loadHistory();
+
 
 
 
@@ -66,7 +70,7 @@ loadHistory();
     }
   }
 
-  loadRecentCities()
+  
 //end here
 
 // the following is to call and declare input from form input field
@@ -86,7 +90,7 @@ if(city && cities.includes(city)===false){
 }
 else if(cities.includes(city)===true){
   search(city);
-  return city;
+  return ;
 
 } else if (!city){
   alert("Enter a real city name.")
@@ -109,8 +113,9 @@ function saveToStorage(city){
 function listCities() {
   $("#body-list").text("");
   cities.forEach(function(city) {
-var row="row";
-$("#body-list").append("<tr><td>" + city + "</td></tr>");
+console.log(cities.length)
+let cityNames="cityNames";
+$("#body-list").append("<tr><td class="+cityNames+">" + city + "</td></tr>");
   });
 }
 
@@ -153,6 +158,7 @@ function search(city){
     let cityCond =data.weather[0].description.toUpperCase();
     console.log("city cond" +cityCond);
     let cityTemp = data.main.temp;
+    let cityMaxTemp = data.main.temp_max;
     console.log("city temp" + cityTemp);
     let cityHum = data.main.humidity;
     console.log("cityHum" + cityHum);
@@ -168,6 +174,7 @@ function search(city){
     $("#city-name-date").html("City of " + cityName + " on " + " " + todaysDate + ".");
     $("#city-cond").text("Current Conditions: " + cityCond);
     $("#temp").text("Current Temp (F): " + cityTemp.toFixed(1));
+    $("#high").text("Max Temp (F): " + cityMaxTemp.toFixed(1));
     $("#humidity").text("Humidity: " + cityHum + "%");
     $("#wind-speed").text("Wind Speed: " + cityWind + "mph");
     $("#icon").html(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`);
@@ -264,6 +271,31 @@ fetch(cityURLlatLon,{
 
 } //<!-- the bracket is for the search fucntion-->
   
+$(".cityNames").on("click", function(event){
+  event.preventDefault();
+  
+  let listedCity = $(event.target).text();
+  console.log(listedCity.length);
+  if (listedCity.length>0){
+  city = listedCity;
+  search(city);
+}else{
+  console.log("empty click")
+  return;
+}
+});
+
+});
 
 
-  });
+
+
+// the following is going to be the event handeler for a clear button
+
+$("#Clear").click(function() {
+  localStorage.removeItem("cities");
+  localStorage.removeItem("mostRecent");
+  history.go(0);
+});
+
+  
