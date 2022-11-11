@@ -1,6 +1,6 @@
 # WeatherDashboard
 Displays the weather
-# Work Day Scheduler
+# WeatherDashboard
 
 
 ### Description
@@ -18,6 +18,8 @@ THEN I am again presented with current and future conditions for that city
 <br>
 
 ## How to use.
+
+Upon Load the Home Page will load Miami Local Weather.
 
 Open the webpage and the local storage will be utilized with input data.
 
