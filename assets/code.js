@@ -217,6 +217,8 @@ fetch(cityURLlatLon,{
   $("#icon1").html(`<img src="http://openweathermap.org/img/wn/${icon1}@2x.png">`);
   des1=fiveDayquery[0].weather[0].description;
   $("#des1").text(des1);
+  let wind1= fiveDayquery[0].wind.speed;
+  $("#wind1").text("Wind Speeds: "+ wind1 + " mph");
 
 
   console.log("the max temp for day2 is : " + fiveDayquery[1].main.temp_max)
@@ -228,6 +230,8 @@ fetch(cityURLlatLon,{
   $("#icon2").html(`<img src="http://openweathermap.org/img/wn/${icon2}@2x.png">`);
   des2=fiveDayquery[1].weather[0].description;
   $("#des2").text(des2);
+  let wind2= fiveDayquery[1].wind.speed;
+  $("#wind2").text("Wind Speeds: "+ wind2 + " mph");
 
 
   console.log("the max temp for day3 is : " + fiveDayquery[2].main.temp_max)
@@ -239,6 +243,8 @@ fetch(cityURLlatLon,{
   $("#icon3").html(`<img src="http://openweathermap.org/img/wn/${icon3}@2x.png">`);
   des3=fiveDayquery[2].weather[0].description;
   $("#des3").text(des3);
+  let wind3= fiveDayquery[2].wind.speed;
+  $("#wind3").text("Wind Speeds: "+ wind3 + " mph");
 
 
   console.log("the max temp for day4 is : " + fiveDayquery[3].main.temp_max)
@@ -250,6 +256,8 @@ fetch(cityURLlatLon,{
   $("#icon4").html(`<img src="http://openweathermap.org/img/wn/${icon4}@2x.png">`);
   des4=fiveDayquery[3].weather[0].description;
   $("#des4").text(des4);
+  let wind4= fiveDayquery[3].wind.speed;
+  $("#wind4").text("Wind Speeds: "+ wind4 + " mph");
 
 
   console.log("the max temp for day5 is : " + fiveDayquery[4].main.temp_max)
@@ -261,6 +269,8 @@ fetch(cityURLlatLon,{
   $("#icon5").html(`<img src="http://openweathermap.org/img/wn/${icon5}@2x.png">`);
   des5=fiveDayquery[4].weather[0].description;
   $("#des5").text(des5);
+  let wind5= fiveDayquery[4].wind.speed;
+  $("#wind5").text("Wind Speeds: "+ wind5 + " mph");
 });
 
 }
