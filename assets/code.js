@@ -298,17 +298,6 @@ fetch(cityURLlatLon,{
 
 });
 
-// var cityNames = document.querySelector(".cityNames");
-// console.log("this should be done" +cityNames);
-// cityNames.click(function(){
-//   console.log(this);
-//    let listedCity = $(this).text();
-//    console.log("clicked"+ listedCity.length);
-//    console.log(listedCity);
-//    search(listedCity);
-//  });
- 
-
 
 // the following is going to be the event handeler for a clear button
 
