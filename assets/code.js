@@ -29,9 +29,9 @@ $(document).ready(function initiate() {
   $("#date5").text(day5);
   console.log("Next days are : "+ day1+ "," + day2+ "," + day3+ "," + day4+ "," +day5);
 
-  loadRecentCities();
+  
   loadHistory();
-
+  
 
   //*** time variables end list here */
 
@@ -52,6 +52,7 @@ function loadHistory() {
     HomeCity = "Miami";
     search(HomeCity);
   }
+  loadRecentCities();
 }
 
 
@@ -68,6 +69,7 @@ function loadHistory() {
     } else {
       cities = [];
     }
+    listCities();
   }
 
   
@@ -111,15 +113,26 @@ function saveToStorage(city){
 
 // function to add to visible listCities
 function listCities() {
-  $("#body-list").text("");
+  $("#body-list").empty();
   cities.forEach(function(city) {
 console.log(cities.length)
-let cityNames="cityNames";
-$("#body-list").append("<tr><td class="+cityNames+">" + city + "</td></tr>");
-  });
-}
+$("#body-list").append("<tr><td class='cityNames'>" + city + "</td></tr>");
+})
+const cityNamesList= document.querySelectorAll('.cityNames');
+cityNamesList.forEach(cityname =>{
+  console.log('eventCreated')
+  cityname.addEventListener('click',function(){
+    console.log(this);
+     let listedCity = $(this).text();
+     console.log("clicked"+ listedCity.length);
+     console.log(listedCity);
+     search(listedCity);
+})
+})
+  };
 
-listCities();
+
+
 
 //end function for visible listCities
 
@@ -132,7 +145,8 @@ $("#search").on("click", function(errorCheck){
   errorCheck.preventDefault();
   pullCity();
   $("#city-input").val("");
-  listCities();
+  
+  loadHistory();
 });
 
 
@@ -281,23 +295,19 @@ fetch(cityURLlatLon,{
 
 } //<!-- the bracket is for the search fucntion-->
   
-$(".cityNames").on("click", function(event){
-  event.preventDefault();
-  
-  let listedCity = $(event.target).text();
-  console.log(listedCity.length);
-  if (listedCity.length>0){
-  city = listedCity;
-  search(city);
-}else{
-  console.log("empty click")
-  return;
-}
-});
 
 });
 
-
+// var cityNames = document.querySelector(".cityNames");
+// console.log("this should be done" +cityNames);
+// cityNames.click(function(){
+//   console.log(this);
+//    let listedCity = $(this).text();
+//    console.log("clicked"+ listedCity.length);
+//    console.log(listedCity);
+//    search(listedCity);
+//  });
+ 
 
 
 // the following is going to be the event handeler for a clear button
